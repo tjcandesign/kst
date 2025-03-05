@@ -34,7 +34,7 @@ body {
 /* Header Styles */
 header {
     position: fixed;
-    top: 65px;
+    top: 85px;
     transition: top 0.3s ease;
     left: 0;
     right: 0;
