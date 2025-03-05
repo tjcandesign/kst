@@ -178,11 +178,6 @@ header {
     border-radius: 8px;
 }
 
-.gallery-grid img:nth-last-child(1),
-.gallery-grid img:nth-last-child(2) {
-    height: 350px;
-}
-
 footer {
     background-color: var(--primary-color);
     color: white;
