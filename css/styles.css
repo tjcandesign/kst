@@ -88,39 +88,24 @@ footer {
     padding: 4rem 0;
     position: relative;
     color: var(--text-color);
-}
-
-#location::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-}
-
-#location > * {
-    position: relative;
-    z-index: 2;
+    background: white;
 }
 
 .location-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
-    border-radius: 8px;
     margin-top: 2rem;
 }
 
 #contact {
     padding: 4rem 0;
+    min-height: 80vh;
     background: url('../images/DSC02403.jpg') center/cover no-repeat;
     position: relative;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 #contact::before {
@@ -142,8 +127,12 @@ footer {
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 4rem;
     margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3rem;
+    border-radius: 8px;
+    width: 100%;
 }
 
 /* Media Queries */
