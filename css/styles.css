@@ -69,10 +69,70 @@ header {
 
 .merch-preorder {
     font-family: var(--font-heading);
-    color: white;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
+}
+
+.merch-preorder a {
+    color: white;
+    text-decoration: none;
+}
+
+.preorder-tray {
+    position: fixed;
+    top: -200px;
+    left: 0;
+    right: 0;
+    background: var(--menu-background);
+    padding: 2rem;
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.preorder-tray.active {
+    top: 0;
+}
+
+.preorder-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.preorder-form h3 {
+    font-family: var(--font-heading);
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.form-group input {
+    padding: 0.75rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    width: 300px;
+    font-family: var(--font-body);
+}
+
+.submit-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background: #e63517;
 }
 
 
@@ -141,7 +201,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.75);
     z-index: 1;
 }
 
