@@ -575,12 +575,8 @@ footer {
     display: block;
     margin-bottom: 2rem;
     border-radius: 10px;
-    transition: transform 0.3s ease;
 }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
