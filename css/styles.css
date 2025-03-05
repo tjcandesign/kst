@@ -142,12 +142,34 @@ header {
     position: relative;
 }
 
+.form-container {
+    background: white;
+    border: 3px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.form-container::before {
+    content: 'Join Our Email List!';
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--secondary-color);
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
 .preorder-form iframe {
     width: 100%;
     height: 450px;
     border: none;
     background: transparent;
-    margin: 0 auto;
+    margin: 3rem auto 0;
+    display: block;
 }
 
 @media (max-width: 768px) {
@@ -179,9 +201,24 @@ header {
         margin-top: 120px;
     }
 
+    .form-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 2rem 1rem;
+    }
+
+    .form-container::before {
+        font-size: 1.75rem;
+        top: 0.75rem;
+    }
+
     .preorder-form iframe {
-        height: calc(100vh - 180px);
+        height: calc(100vh - 240px);
         max-height: 600px;
+        margin-top: 2.5rem;
     }
 
     .close-tray {
