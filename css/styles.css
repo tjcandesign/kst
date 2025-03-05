@@ -192,13 +192,14 @@ footer {
 }
 
 .credits a {
-    color: white;
+    color: var(--menu-background);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
+    transition: all 0.2s;
 }
 
 .credits a:hover {
+    color: white;
     border-color: white;
 }
 
