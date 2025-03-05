@@ -8,15 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfjwsE_NHa-7aRN5sx01r2vjL_weNv009I85yIOcLxD4uq1Lw/formResponse';
 
     // Toggle tray
-    merchLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        preorderTray.classList.toggle('active');
-    });
+    if (merchLink) {
+        merchLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent event from bubbling
+            if (preorderTray) {
+                preorderTray.classList.toggle('active');
+                console.log('Toggled tray:', preorderTray.classList.contains('active'));
+            }
+        });
+    }
 
     // Close tray when clicking outside
     document.addEventListener('click', (e) => {
-        if (!preorderTray.contains(e.target) && 
-            !merchLink.contains(e.target) && 
+        if (preorderTray && 
+            !preorderTray.contains(e.target) && 
+            (!merchLink || !merchLink.contains(e.target)) && 
             preorderTray.classList.contains('active')) {
             preorderTray.classList.remove('active');
         }
