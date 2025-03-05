@@ -449,8 +449,10 @@ footer {
 .special-section {
     background: var(--primary-color);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 4rem;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .special-section .menu-section-title {
