@@ -1,5 +1,5 @@
 // Add smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]:not(#merchPreorderLink)').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const href = this.getAttribute('href');
