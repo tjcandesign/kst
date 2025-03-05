@@ -68,10 +68,10 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    max-width: 800px;
-    height: auto;
+    width: 600px;
+    height: 300px;
     z-index: 2;
+    background: url('../images/svgs/Herooverlay.svg') center/contain no-repeat;
     mix-blend-mode: normal;
 }
 
