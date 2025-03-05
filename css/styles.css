@@ -43,6 +43,10 @@ header {
     justify-content: space-between;
     align-items: center;
     background: transparent;
+}
+
+header .logo img,
+header .flag img {
     mix-blend-mode: difference;
 }
 
@@ -83,9 +87,8 @@ footer {
 
 #location {
     padding: 4rem 0;
-    background: url('../images/DSC02403.jpg') center/cover no-repeat;
     position: relative;
-    color: white;
+    color: var(--text-color);
 }
 
 #location::before {
@@ -111,6 +114,36 @@ footer {
     background: rgba(0, 0, 0, 0.8);
     padding: 2rem;
     border-radius: 8px;
+    margin-top: 2rem;
+}
+
+#contact {
+    padding: 4rem 0;
+    background: url('../images/DSC02403.jpg') center/cover no-repeat;
+    position: relative;
+    color: white;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+#contact > * {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
