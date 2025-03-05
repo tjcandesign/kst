@@ -185,6 +185,23 @@ footer {
     text-align: center;
 }
 
+.credits {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.credits a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.credits a:hover {
+    border-color: white;
+}
+
 #location {
     padding: 4rem 0;
     position: relative;
