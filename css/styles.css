@@ -178,6 +178,25 @@ header {
     border-radius: 8px;
 }
 
+.hours-info {
+    text-align: left;
+    padding: 1rem;
+}
+
+.hours-info p {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.info-icon {
+    flex-shrink: 0;
+    width: 24px;
+    margin-right: 8px;
+    text-align: center;
+}
+
 footer {
     background-color: var(--primary-color);
     color: white;
