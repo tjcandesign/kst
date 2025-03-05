@@ -3,6 +3,11 @@
     src: url('../fonts/Calvous DEMO.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'Oaxaca';
+    src: url('../fonts/Oaxaca.otf') format('opentype');
+}
+
 :root {
     --primary-color: #FF3B1D;  /* Bright red from logo */
     --secondary-color: #000000;
@@ -63,7 +68,7 @@ header {
 .hero .svg-overlay-1 {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
@@ -76,12 +81,12 @@ header {
 .hero .svg-overlay-2 {
     content: '';
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
     height: 400px;
-    background: url('../images/svgs/Asset\ 8.svg') center/contain no-repeat;
+    background: url('../images/svgs/bychef.svg') center/contain no-repeat;
     opacity: 0.9;
 }
 
@@ -93,7 +98,7 @@ header {
 
 .menu h2,
 .gallery h2 {
-    font-family: var(--font-heading);
+    font-family: 'Calvous Demo', cursive;
     color: var(--primary-color);
     font-size: 3rem;
     text-align: left;
@@ -134,9 +139,9 @@ header {
 }
 
 .menu-item-info h3 {
-    font-family: var(--font-heading);
+    font-family: 'Oaxaca', cursive;
     color: var(--text-color);
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
@@ -162,9 +167,9 @@ header {
 }
 
 .protein-options h3 {
-    font-family: var(--font-heading);
+    font-family: 'Oaxaca', cursive;
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
     text-align: center;
 }
