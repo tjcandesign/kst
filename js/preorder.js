@@ -11,35 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close tray when clicking outside
     document.addEventListener('click', (e) => {
-        if (!preorderTray.contains(e.target) && !merchLink.contains(e.target) && preorderTray.classList.contains('active')) {
+        if (!preorderTray.contains(e.target) && 
+            !merchLink.contains(e.target) && 
+            preorderTray.classList.contains('active')) {
             preorderTray.classList.remove('active');
         }
     });
 
     // Handle form submission
-    preorderForm.addEventListener('submit', async (e) => {
+    preorderForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('preorderEmail').value;
         
-        try {
-            const response = await fetch('/api/preorder', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            if (response.ok) {
-                alert('Thanks! We\'ll notify you when merch drops!');
-                preorderForm.reset();
-                preorderTray.classList.remove('active');
-            } else {
-                alert('Something went wrong. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Something went wrong. Please try again.');
+        // For now, just store in localStorage
+        let emails = JSON.parse(localStorage.getItem('preorderEmails') || '[]');
+        if (!emails.includes(email)) {
+            emails.push(email);
+            localStorage.setItem('preorderEmails', JSON.stringify(emails));
+            alert('Thanks! We\'ll notify you when merch drops!');
+            preorderForm.reset();
+            preorderTray.classList.remove('active');
+        } else {
+            alert('This email is already registered!');
         }
     });
 });

@@ -81,7 +81,7 @@ header {
 
 .preorder-tray {
     position: fixed;
-    top: -200px;
+    top: -100%;
     left: 0;
     right: 0;
     background: var(--menu-background);
