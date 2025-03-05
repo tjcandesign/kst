@@ -54,10 +54,16 @@ header .flag img {
     width: 300px;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
 .merch-preorder {
-    font-family: var(--font-heading);
+    font-family: 'Oaxaca', sans-serif;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     mix-blend-mode: difference;
 }
 
