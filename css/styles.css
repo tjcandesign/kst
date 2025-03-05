@@ -46,13 +46,18 @@ header {
 
 .logo img {
     height: auto;
-    width: 200px;
+    width: 300px;
     filter: brightness(0) invert(1);
+}
+
+.flag {
+    margin-left: auto;
 }
 
 .flag img {
     height: auto;
     width: 80px;
+    filter: brightness(0) invert(1);
 }
 
 /* Hero Section */
