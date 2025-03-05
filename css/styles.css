@@ -61,7 +61,16 @@ header {
     overflow: hidden;
 }
 
-
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
 .hero-overlay {
     position: absolute;
@@ -70,9 +79,9 @@ header {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 300px;
-    z-index: 2;
+    z-index: 10;
     background: url('../images/svgs/Herooverlay.svg') center/contain no-repeat;
-    mix-blend-mode: normal;
+    pointer-events: none;
 }
 
 
