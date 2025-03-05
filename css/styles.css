@@ -919,10 +919,32 @@ footer {
     text-align: left;
 }
 
+@media (max-width: 480px) {
+    .contact h2 {
+        font-size: 2rem;
+    }
+}
+
 .contact-info {
     max-width: 600px;
     padding: 0;
     margin-left: 2rem;
+}
+
+.spinning-circle {
+    margin-top: 2rem;
+    width: 190px;
+}
+
+.spinning-circle img {
+    width: 100%;
+    height: auto;
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Footer */
