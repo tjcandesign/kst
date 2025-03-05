@@ -34,7 +34,7 @@ body {
 /* Header Styles */
 header {
     position: fixed;
-    top: 0;
+    top: 40px;
     left: 0;
     right: 0;
     padding: 1rem 2rem;
@@ -625,6 +625,46 @@ footer {
     margin-top: 0.5rem;
 }
 
+.notification-bar {
+    background: var(--menu-background);
+    color: var(--text-color);
+    padding: 0.75rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oaxaca', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.notification-text {
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+    padding-right: 2rem;
+}
+
+.close-notification {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem 0.5rem;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.notification-bar.hidden {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .menu-item {
         grid-template-columns: 1fr;
@@ -633,6 +673,15 @@ footer {
     .menu-item .price {
         text-align: left;
         margin-top: 0.5rem;
+        font-family: var(--font-heading);
+    }
+
+    .menu-item .price .currency {
+        font-family: 'Oaxaca';
+    }
+
+    .menu-item .price .amount {
+        font-family: 'Calvous Demo';
     }
 }
 
