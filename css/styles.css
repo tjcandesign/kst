@@ -72,6 +72,12 @@ header {
     50% { color: var(--menu-background); }
 }
 
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+}
+
 .merch-preorder {
     font-family: var(--font-heading);
     font-size: 0.9rem;
@@ -82,8 +88,11 @@ header {
 .merch-preorder a {
     color: white;
     text-decoration: none;
-    animation: flash-colors 2s infinite;
+    animation: 
+        flash-colors 2s infinite,
+        bounce 1.5s ease-in-out;
     transition: text-decoration 0.2s;
+    display: inline-block;
 }
 
 .merch-preorder a:hover {
