@@ -8,48 +8,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Handle form submission
-    preorderForm.addEventListener('submit', async (e) => {
+    preorderForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('preorderEmail').value;
         submitButton.disabled = true;
         submitButton.textContent = 'Submitting...';
 
-        try {
-            const response = await fetch('http://localhost:3001/api/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email })
-            });
+        // Create a form that submits to Google Forms
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfjwsE_NHa-7aRN5sx01r2vjL_weNv009I85yIOcLxD4uq1Lw/formResponse';
+        form.target = 'hidden_iframe';
 
-            const data = await response.json();
+        // Add email input - using the Google Forms entry ID
+        const emailInput = document.createElement('input');
+        emailInput.type = 'hidden';
+        emailInput.name = 'entry.1045781291'; // Email field entry ID
+        emailInput.value = email;
+        form.appendChild(emailInput);
 
-            if (response.ok) {
-                const formContent = preorderForm.innerHTML;
-                preorderForm.innerHTML = `
-                    <h3>Thanks for signing up!</h3>
-                    <p>We'll notify you when merch is available.</p>
-                `;
-
-                setTimeout(() => {
-                    window.location.hash = '';
-                    setTimeout(() => {
-                        preorderForm.innerHTML = formContent;
-                        document.getElementById('preorderEmail').value = '';
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Submit';
-                    }, 300);
-                }, 3000);
-            } else {
-                throw new Error(data.error || 'Form submission failed');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            submitButton.disabled = false;
-            submitButton.textContent = 'Submit';
-            alert(error.message || 'Something went wrong. Please try again.');
+        // Create hidden iframe for response
+        let iframe = document.getElementById('hidden_iframe');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.name = 'hidden_iframe';
+            iframe.id = 'hidden_iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
         }
+
+        // Show success message and reset form
+        const showSuccess = () => {
+            const formContent = preorderForm.innerHTML;
+            preorderForm.innerHTML = `
+                <h3>Thanks for signing up!</h3>
+                <p>We'll notify you when merch is available.</p>
+            `;
+
+            setTimeout(() => {
+                window.location.hash = '';
+                setTimeout(() => {
+                    preorderForm.innerHTML = formContent;
+                    document.getElementById('preorderEmail').value = '';
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                }, 300);
+            }, 3000);
+        };
+
+        // Handle response
+        iframe.onload = showSuccess;
+
+        // Submit the form
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+
+        // Fallback in case iframe doesn't trigger
+        setTimeout(showSuccess, 2000);
     });
 });
 
