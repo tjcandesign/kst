@@ -712,13 +712,15 @@ footer {
     .menu-item .price {
         text-align: left;
         margin-top: 0.5rem;
-        font-family: var(--font-heading);
     }
 
-    .menu-item .price,
-    .menu-item .price .currency,
+    .menu-item .price .currency {
+        font-family: 'Oaxaca';
+    }
+
     .menu-item .price .amount {
-        font-family: var(--font-heading);
+        font-family: 'Calvous Demo';
+        font-size: 1.5rem;
     }
 }
 
