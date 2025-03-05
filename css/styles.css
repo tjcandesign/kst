@@ -35,6 +35,7 @@ body {
 header {
     position: fixed;
     top: 35px;
+    transition: top 0.3s ease;
     left: 0;
     right: 0;
     padding: 1rem 2rem;
@@ -690,6 +691,14 @@ footer {
 
 .notification-bar.hidden {
     display: none;
+}
+
+.notification-bar.hidden ~ header {
+    top: 0;
+}
+
+.notification-bar.hidden ~ main .hero {
+    margin-top: 0;
 }
 
 @media (max-width: 768px) {
