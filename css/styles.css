@@ -61,7 +61,7 @@ header .flag img {
 }
 
 .merch-preorder {
-    font-family: 'Oaxaca', sans-serif;
+    font-family: var(--font-heading);
     color: white;
     font-size: 1.1rem;
     margin-right: 2rem;
