@@ -33,18 +33,24 @@ body {
 
 /* Header Styles */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 1rem 0;
+    background-color: var(--secondary-color);
+    z-index: 1000;
 }
 
-.logo {
-    text-align: center;
-    padding: 1rem 0;
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .logo img {
     height: auto;
-    width: 300px;
-    max-width: 100%;
+    width: 150px;
 }
 
 /* Hero Section */
@@ -68,7 +74,7 @@ header {
 .hero .svg-overlay-1 {
     content: '';
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
@@ -79,6 +85,19 @@ header {
 }
 
 .hero .svg-overlay-2 {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 400px;
+    background: url('../images/svgs/Asset\ 11.svg') center/contain no-repeat;
+    opacity: 0.9;
+    mix-blend-mode: multiply;
+}
+
+.hero .svg-overlay-3 {
     content: '';
     position: absolute;
     top: 70%;
