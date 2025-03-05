@@ -646,6 +646,7 @@ footer {
     background: var(--menu-background);
     color: var(--text-color);
     padding: 0.6rem;
+    border-bottom: 3px solid black;
     position: fixed;
     width: 100%;
     top: 0;
@@ -667,7 +668,7 @@ footer {
 
 .notification-text {
     white-space: nowrap;
-    animation: scroll 20s linear infinite;
+    animation: scroll 15s linear infinite;
     flex-shrink: 0;
     display: inline-block;
     position: absolute;
@@ -714,12 +715,10 @@ footer {
         font-family: var(--font-heading);
     }
 
-    .menu-item .price .currency {
-        font-family: 'Oaxaca';
-    }
-
+    .menu-item .price,
+    .menu-item .price .currency,
     .menu-item .price .amount {
-        font-family: 'Calvous Demo';
+        font-family: var(--font-heading);
     }
 }
 
