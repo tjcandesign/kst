@@ -101,19 +101,16 @@ header {
 }
 
 .preorder-tray {
-    position: fixed;
-    top: -200%;
-    left: 0;
-    right: 0;
+    height: 0;
+    overflow: hidden;
     background: var(--menu-background);
-    padding: 2rem;
-    transition: top 0.3s ease-in-out;
-    z-index: 1000;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: height 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 52px;
 }
 
 #preorderTray:target {
-    top: 52px;
+    height: 500px;
 }
 
 .close-tray {
@@ -130,17 +127,15 @@ header {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
-    height: 200px;
-    overflow: hidden;
+    padding: 2rem;
+    position: relative;
 }
 
 .preorder-form iframe {
     width: 100%;
-    height: 100%;
+    height: 450px;
     border: none;
     background: transparent;
-    transform: scale(0.95);
-    transform-origin: 0 0;
     margin: 0 auto;
 }
 
