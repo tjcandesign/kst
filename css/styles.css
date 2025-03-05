@@ -92,7 +92,7 @@ header {
 
 /* Menu Section */
 .menu {
-    padding: 4rem 0;
+    padding: 4rem 0 8rem;
     background-color: var(--menu-background);
 }
 
@@ -227,7 +227,6 @@ header {
 /* Location Section */
 .location {
     padding: 4rem 0;
-    text-align: center;
     background-color: #f9f9f9;
 }
 
@@ -236,12 +235,21 @@ header {
     color: var(--primary-color);
     font-size: 3rem;
     margin-bottom: 2rem;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
 }
 
 .location-info {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    padding: 0 2rem;
+    text-align: left;
 }
 
 .feature-text {
@@ -262,13 +270,14 @@ header {
     background: var(--menu-background);
     padding: 2rem;
     border-radius: 10px;
-    margin: 2rem 0;
+    height: fit-content;
 }
 
 .hours-info p {
     font-family: 'Oaxaca', cursive;
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    text-align: left;
 }
 
 .social-info {
@@ -291,6 +300,12 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+    .location-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Contact Section */
@@ -343,9 +358,8 @@ footer {
 }
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
+    columns: 2;
+    column-gap: 2rem;
     max-width: 1600px;
     margin: 0 auto;
     padding: 2rem;
@@ -353,8 +367,9 @@ footer {
 
 .gallery-grid img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: auto;
+    display: block;
+    margin-bottom: 2rem;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
