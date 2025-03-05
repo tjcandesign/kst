@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const merchLink = document.getElementById('merchPreorderLink');
     const preorderTray = document.getElementById('preorderTray');
     const preorderForm = document.getElementById('preorderForm');
+    const submitButton = document.querySelector('.submit-btn');
+
+    // Google Apps Script URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYT8bAEw1FcBblx7Xz6aQEy6hlxBxODkDP3SmkcoSSmzKdIUMidA5wQeQDPxtAiZN5/exec';
 
     // Toggle tray
     merchLink.addEventListener('click', (e) => {
@@ -19,20 +23,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle form submission
-    preorderForm.addEventListener('submit', (e) => {
+    preorderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('preorderEmail').value;
-        
-        // For now, just store in localStorage
-        let emails = JSON.parse(localStorage.getItem('preorderEmails') || '[]');
-        if (!emails.includes(email)) {
-            emails.push(email);
-            localStorage.setItem('preorderEmails', JSON.stringify(emails));
-            alert('Thanks! We\'ll notify you when merch drops!');
-            preorderForm.reset();
-            preorderTray.classList.remove('active');
-        } else {
-            alert('This email is already registered!');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        try {
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email })
+            });
+
+            // Show success message
+            const formContent = preorderForm.innerHTML;
+            preorderForm.innerHTML = `
+                <h3>Thanks for signing up!</h3>
+                <p>We'll notify you when merch is available.</p>
+            `;
+
+            // Close the tray and reset form after 3 seconds
+            setTimeout(() => {
+                preorderTray.classList.remove('active');
+                setTimeout(() => {
+                    preorderForm.innerHTML = formContent;
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                }, 300);
+            }, 3000);
+
+        } catch (error) {
+            console.error('Error:', error);
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit';
+            alert('Something went wrong. Please try again.');
         }
     });
 });
