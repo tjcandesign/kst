@@ -74,20 +74,7 @@ header {
 .hero .svg-overlay-1 {
     content: '';
     position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 400px;
-    background: url('../images/svgs/Asset\ 9.svg') center/contain no-repeat;
-    opacity: 0.9;
-    mix-blend-mode: multiply;
-}
-
-.hero .svg-overlay-2 {
-    content: '';
-    position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
@@ -96,10 +83,10 @@ header {
     opacity: 0.9;
 }
 
-.hero .svg-overlay-3 {
+.hero .svg-overlay-2 {
     content: '';
     position: absolute;
-    top: 70%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
