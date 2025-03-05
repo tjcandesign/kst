@@ -23,55 +23,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle form submission
-    preorderForm.addEventListener('submit', async (e) => {
+    preorderForm.addEventListener('submit', (e) => {
         console.log('Form submission started');
         e.preventDefault();
         const email = document.getElementById('preorderEmail').value;
         submitButton.disabled = true;
         submitButton.textContent = 'Submitting...';
 
-        try {
-            console.log('Submitting email:', email);
-            
-            const formData = new FormData();
-            formData.append('email', email);
-            formData.append('timestamp', new Date().toISOString());
+        // Create a form that submits to Google
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = SCRIPT_URL;
+        form.target = 'hidden_iframe';
 
-            console.log('Sending request to:', SCRIPT_URL);
-            const response = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData
-            });
+        // Add email input
+        const emailInput = document.createElement('input');
+        emailInput.type = 'hidden';
+        emailInput.name = 'email';
+        emailInput.value = email;
+        form.appendChild(emailInput);
 
-            console.log('Response status:', response.status);
-            // Check if submission was successful
-            if (response.ok || response.status === 0) { // status 0 for no-cors
-                console.log('Submission successful');
-                const formContent = preorderForm.innerHTML;
-                preorderForm.innerHTML = `
-                    <h3>Thanks for signing up!</h3>
-                    <p>We'll notify you when merch is available.</p>
-                `;
+        // Add timestamp
+        const timestampInput = document.createElement('input');
+        timestampInput.type = 'hidden';
+        timestampInput.name = 'timestamp';
+        timestampInput.value = new Date().toISOString();
+        form.appendChild(timestampInput);
 
-                // Close the tray and reset form after 3 seconds
-                setTimeout(() => {
-                    preorderTray.classList.remove('active');
-                    setTimeout(() => {
-                        preorderForm.innerHTML = formContent;
-                        document.getElementById('preorderEmail').value = '';
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Submit';
-                    }, 300);
-                }, 3000);
-            } else {
-                throw new Error('Submission failed');
-            }
-        } catch (error) {
-            console.error('Detailed error:', error);
-            console.error('Error stack:', error.stack);
-            submitButton.disabled = false;
-            submitButton.textContent = 'Submit';
-            alert('Something went wrong. Please try again.');
+        // Create hidden iframe for response
+        let iframe = document.getElementById('hidden_iframe');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.name = 'hidden_iframe';
+            iframe.id = 'hidden_iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
         }
+
+        // Handle response
+        iframe.onload = () => {
+            console.log('Submission completed');
+            const formContent = preorderForm.innerHTML;
+            preorderForm.innerHTML = `
+                <h3>Thanks for signing up!</h3>
+                <p>We'll notify you when merch is available.</p>
+            `;
+
+            // Close the tray and reset form after 3 seconds
+            setTimeout(() => {
+                preorderTray.classList.remove('active');
+                setTimeout(() => {
+                    preorderForm.innerHTML = formContent;
+                    document.getElementById('preorderEmail').value = '';
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                }, 300);
+            }, 3000);
+        };
+
+        // Submit the form
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+    });
     });
 });
