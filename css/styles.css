@@ -658,10 +658,22 @@ footer {
     letter-spacing: 0.5px;
 }
 
+.notification-content {
+    display: flex;
+    overflow: hidden;
+    width: calc(100% - 30px);
+}
+
 .notification-text {
     white-space: nowrap;
-    animation: scroll-left 12s linear infinite;
-    padding-right: 2rem;
+    padding-right: 0;
+    animation: scroll 20s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
 .close-notification {
@@ -672,10 +684,7 @@ footer {
     padding: 0.25rem 0.5rem;
 }
 
-@keyframes scroll-left {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
+
 
 .notification-bar.hidden {
     display: none;
