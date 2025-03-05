@@ -153,10 +153,8 @@ footer {
     }
 
     .hero-overlay {
-        width: 80vw;
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
+        width: 90%;
+        max-width: 800px;
     }
 
     .menu-content {
@@ -258,8 +256,9 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1400px;
-    height: 700px;
+    width: 90%;
+    max-width: 1400px;
+    height: auto;
     z-index: 10;
 }
 
