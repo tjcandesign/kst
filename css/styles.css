@@ -148,13 +148,13 @@ footer {
     }
 
     .menu-item {
-        grid-template-columns: 1fr;
-        text-align: center;
+        grid-template-columns: 1fr auto;
+        text-align: left;
         gap: 0.5rem;
     }
 
     .menu-item .price {
-        text-align: center;
+        text-align: right;
     }
 
     .protein-list {
@@ -308,11 +308,11 @@ footer {
 }
 
 .menu-item .price .currency {
-    font-family: 'Oaxaca', cursive;
+    font-family: 'Oaxaca';
 }
 
 .menu-item .price .amount {
-    font-family: var(--font-heading);
+    font-family: 'Calvous Demo';
 }
 
 .protein-options {
@@ -331,10 +331,9 @@ footer {
 }
 
 .protein-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    justify-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     text-align: left;
     padding-left: 2rem;
 }
