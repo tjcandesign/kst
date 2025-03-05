@@ -466,41 +466,42 @@ footer {
 }
 
 .special-section {
-    background: var(--primary-color);
+    background: var(--menu-background);
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 4rem;
-    border: 2px solid white;
+    border: 2px solid var(--primary-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .special-section .menu-section-title {
-    color: white;
+    color: var(--primary-color);
     margin-bottom: 1.5rem;
     font-family: var(--font-heading);
     font-size: 2rem;
 }
 
 .special-section .menu-item {
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
     padding-bottom: 1rem;
 }
 
 .special-section .menu-item-info h3 {
-    color: white;
+    color: var(--text-color);
     font-family: var(--font-heading);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
 .special-section .menu-item-info p {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    opacity: 0.8;
     font-family: var(--font-body);
     font-size: 1rem;
 }
 
 .special-section .price {
-    color: white;
+    color: var(--primary-color);
     font-family: var(--font-heading);
     font-size: 1.2rem;
 }
