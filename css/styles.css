@@ -37,20 +37,21 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    padding: 1rem 0;
-    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
     z-index: 1000;
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo img {
     height: auto;
     width: 150px;
+}
+
+.flag img {
+    height: auto;
+    width: 50px;
 }
 
 /* Hero Section */
@@ -80,8 +81,6 @@ header {
     width: 600px;
     height: 300px;
     z-index: 10;
-    background: url('../images/svgs/Herooverlay.svg') center/contain no-repeat;
-    pointer-events: none;
 }
 
 
