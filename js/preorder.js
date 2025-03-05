@@ -15,16 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.textContent = 'Submitting...';
 
         try {
-            const response = await fetch('https://formspree.io/f/mbjnqkjw', {
+            const response = await fetch('http://localhost:3001/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    email: email,
-                    subject: 'KST Merch Preorder Interest'
-                })
+                body: JSON.stringify({ email })
             });
+
+            const data = await response.json();
 
             if (response.ok) {
                 const formContent = preorderForm.innerHTML;
@@ -43,13 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 300);
                 }, 3000);
             } else {
-                throw new Error('Form submission failed');
+                throw new Error(data.error || 'Form submission failed');
             }
         } catch (error) {
             console.error('Error submitting form:', error);
             submitButton.disabled = false;
             submitButton.textContent = 'Submit';
-            alert('Something went wrong. Please try again.');
+            alert(error.message || 'Something went wrong. Please try again.');
         }
     });
 });

@@ -1,0 +1,14 @@
+{
+  "name": "kennedy-street-tacos",
+  "version": "1.0.0",
+  "description": "Kennedy Street Tacos website",
+  "main": "api/email-signup.js",
+  "scripts": {
+    "start": "node api/email-signup.js",
+    "export": "node scripts/export-emails.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
