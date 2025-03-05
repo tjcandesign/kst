@@ -67,9 +67,14 @@ header {
     gap: 2rem;
 }
 
+@keyframes flash-colors {
+    0%, 100% { color: white; }
+    50% { color: var(--menu-background); }
+}
+
 .merch-preorder {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
 }
@@ -77,6 +82,12 @@ header {
 .merch-preorder a {
     color: white;
     text-decoration: none;
+    animation: flash-colors 2s infinite;
+    transition: text-decoration 0.2s;
+}
+
+.merch-preorder a:hover {
+    text-decoration: underline;
 }
 
 .preorder-tray {
