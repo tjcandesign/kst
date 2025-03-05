@@ -1,10 +1,15 @@
+@font-face {
+    font-family: 'Calvous Demo';
+    src: url('../fonts/Calvous DEMO.otf') format('opentype');
+}
+
 :root {
     --primary-color: #FF3B1D;  /* Bright red from logo */
     --secondary-color: #000000;
     --text-color: #333333;
     --background-color: #FFFFFF;
-    --accent-color: #FFC107;  /* Warm yellow for accents */
-    --font-heading: 'Cooper Black', 'Alfa Slab One', cursive;
+    --menu-background: #ffea1b;
+    --font-heading: 'Calvous Demo', cursive;
     --font-body: 'Poppins', sans-serif;
 }
 
@@ -23,13 +28,7 @@ body {
 
 /* Header Styles */
 header {
-    background-color: var(--background-color);
     padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .logo {
@@ -43,41 +42,25 @@ header {
     max-width: 100%;
 }
 
-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 2rem;
-}
-
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--primary-color);
-}
-
 /* Hero Section */
 .hero {
     height: 100vh;
     background: url('../images/KennedySt-15.JPG') center/cover no-repeat fixed;
     position: relative;
-    margin-top: 80px;
     overflow: hidden;
 }
 
 .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .svg-overlay-1 {
     content: '';
     position: absolute;
     top: 50%;
@@ -90,21 +73,22 @@ nav a:hover {
     mix-blend-mode: multiply;
 }
 
-.hero::after {
+.hero .svg-overlay-2 {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: url('../images/svgs/Asset\ 8.svg') center/cover no-repeat;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 400px;
+    background: url('../images/svgs/Asset\ 8.svg') center/contain no-repeat;
     opacity: 0.9;
 }
 
 /* Menu Section */
 .menu {
     padding: 4rem 0;
-    background-color: #f9f9f9;
+    background-color: var(--menu-background);
 }
 
 .menu h2,
@@ -112,8 +96,9 @@ nav a:hover {
     font-family: var(--font-heading);
     color: var(--primary-color);
     font-size: 3rem;
-    text-align: center;
+    text-align: left;
     margin-bottom: 3rem;
+    padding-left: 2rem;
 }
 
 .menu-content {
