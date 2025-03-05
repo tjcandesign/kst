@@ -143,7 +143,6 @@ header {
 }
 
 .form-container {
-    background: white;
     border: 3px solid var(--primary-color);
     border-radius: 8px;
     padding: 1.5rem;
@@ -198,14 +197,14 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 120px;
+        margin-top: 100px;
     }
 
     .form-container {
         width: 100%;
         max-width: 500px;
         margin: 0 auto;
-        background: white;
+
         border-radius: 12px;
         padding: 2rem 1rem;
     }
@@ -222,7 +221,7 @@ header {
     }
 
     .close-tray {
-        top: 130px;
+        top: 110px;
     }
 }
 
