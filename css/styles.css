@@ -470,23 +470,39 @@ footer {
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 4rem;
-    border: 3px solid white;
+    border: 2px solid white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .special-section .menu-section-title {
     color: white;
     margin-bottom: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 2rem;
 }
 
 .special-section .menu-item {
-    border-bottom: 1px dashed white;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    padding-bottom: 1rem;
 }
 
-.special-section .menu-item-info h3,
-.special-section .menu-item-info p,
+.special-section .menu-item-info h3 {
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.special-section .menu-item-info p {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
 .special-section .price {
     color: white;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
 }
 
 .menu-section-title {
