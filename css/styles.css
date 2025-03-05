@@ -568,7 +568,7 @@ footer {
     color: var(--primary-color);
     font-size: 18px;
     margin-bottom: 1rem;
-    text-align: center;
+    text-align: left;
 }
 
 .protein-list {
@@ -589,7 +589,7 @@ footer {
 
 .sides-section {
     text-align: center;
-    margin-top: 3rem;
+    margin: 1rem 0;
 }
 
 .sides-list {
