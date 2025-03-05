@@ -1,15 +1,28 @@
+console.log('Preorder script loading...');
+
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
+    
     const merchLink = document.getElementById('merchPreorderLink');
     const preorderTray = document.getElementById('preorderTray');
     const preorderForm = document.getElementById('preorderForm');
     const submitButton = document.querySelector('.submit-btn');
+
+    console.log('Elements found:', {
+        merchLink: !!merchLink,
+        preorderTray: !!preorderTray,
+        preorderForm: !!preorderForm,
+        submitButton: !!submitButton
+    });
 
     // Google Form URL
     const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfjwsE_NHa-7aRN5sx01r2vjL_weNv009I85yIOcLxD4uq1Lw/formResponse';
 
     // Toggle tray
     if (merchLink) {
+        console.log('Adding click handler to merch link');
         merchLink.addEventListener('click', (e) => {
+            console.log('Merch link clicked');
             e.preventDefault();
             e.stopPropagation(); // Prevent event from bubbling
             if (preorderTray) {
@@ -25,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             !preorderTray.contains(e.target) && 
             (!merchLink || !merchLink.contains(e.target)) && 
             preorderTray.classList.contains('active')) {
+            console.log('Closing tray from outside click');
             preorderTray.classList.remove('active');
         }
     });
@@ -88,6 +102,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Fallback in case iframe doesn't trigger
         setTimeout(showSuccess, 2000);
-    });
     });
 });
