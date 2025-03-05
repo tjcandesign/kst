@@ -667,16 +667,18 @@ footer {
 
 .notification-text {
     white-space: nowrap;
-    animation: scroll 30s linear infinite;
+    animation: scroll 20s linear infinite;
     flex-shrink: 0;
     display: inline-block;
     position: absolute;
     right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @keyframes scroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% { transform: translate(100%, -50%); }
+    100% { transform: translate(-100%, -50%); }
 }
 
 .close-notification {
