@@ -106,7 +106,7 @@ header {
     background: var(--menu-background);
     transition: height 0.3s ease-in-out;
     width: 100%;
-    margin-top: 52px;
+    margin: 0;
 }
 
 #preorderTray:target {
@@ -151,7 +151,7 @@ header {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    margin-top: 2rem;
+    margin-top: 0;
 }
 
 .hero-overlay {
