@@ -251,6 +251,13 @@ footer {
     width: calc(100% - 8rem);
 }
 
+@media screen and (max-width: 768px) {
+    .contact .container {
+        margin-left: 1rem;
+        width: calc(100% - 2rem);
+    }
+}
+
 
 
 #contact > * {
