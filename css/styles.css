@@ -345,15 +345,30 @@ footer {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: url('../images/KennedySt-15.JPG') center/cover no-repeat;
+    background: none;
     position: relative;
     overflow: hidden;
-    background-attachment: fixed;
 }
 
-@media (hover: none) and (pointer: coarse) {
-    .hero {
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/KennedySt-15.JPG') center/cover no-repeat fixed;
+    z-index: -1;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .hero::after {
         background-attachment: scroll;
+        background-size: cover;
         background-position: center center;
     }
 }
