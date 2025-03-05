@@ -164,6 +164,22 @@ header {
     width: 80px;
 }
 
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.hero-overlay {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
