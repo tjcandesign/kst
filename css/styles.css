@@ -64,12 +64,10 @@ header .flag img {
     font-family: 'Oaxaca', sans-serif;
     color: white;
     font-size: 1.1rem;
-    mix-blend-mode: difference;
+    margin-right: 2rem;
 }
 
-.flag {
-    margin-left: 2rem;
-}
+
 
 .flag img {
     height: auto;
