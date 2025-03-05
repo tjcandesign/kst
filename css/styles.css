@@ -666,18 +666,15 @@ footer {
 
 .notification-text {
     white-space: nowrap;
-    animation: scroll 40s linear infinite;
+    animation: scroll 30s linear infinite;
     flex-shrink: 0;
     display: inline-block;
-}
-
-.notification-text span {
-    margin-right: 200px;
-    display: inline-block;
+    position: absolute;
+    right: 0;
 }
 
 @keyframes scroll {
-    0% { transform: translateX(0); }
+    0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
 }
 
