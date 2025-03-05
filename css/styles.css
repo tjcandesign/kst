@@ -559,18 +559,20 @@ footer {
 
 .menu-item .price {
     color: var(--primary-color);
-    font-size: 1.2rem;
-    font-weight: bold;
     white-space: nowrap;
-    font-family: var(--font-heading);
+    display: flex;
+    align-items: center;
+    gap: 2px;
 }
 
 .menu-item .price .currency {
     font-family: 'Oaxaca';
+    font-size: 1.5rem;
 }
 
 .menu-item .price .amount {
     font-family: 'Calvous Demo';
+    font-size: 1.5rem;
 }
 
 .protein-options {
@@ -712,16 +714,10 @@ footer {
     .menu-item .price {
         text-align: left;
         margin-top: 0.5rem;
+        margin-left: 0;
+        justify-content: flex-start;
     }
-
-    .menu-item .price .currency {
-        font-family: 'Oaxaca';
-    }
-
-    .menu-item .price .amount {
-        font-family: 'Calvous Demo';
-        font-size: 1.5rem;
-    }
+}
 }
 
 /* Location Section */
