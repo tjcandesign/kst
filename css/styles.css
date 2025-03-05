@@ -174,8 +174,8 @@ header {
 }
 
 .hero-overlay {
-    width: 60%;
-    max-width: 600px;
+    width: 50%;
+    max-width: 500px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -560,15 +560,20 @@ footer {
 .menu-item .price {
     color: var(--primary-color);
     white-space: nowrap;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 2px;
 }
 
-.menu-item .price .currency,
+.menu-item .price .currency {
+    font-family: 'Oaxaca';
+    font-size: 1.5rem;
+}
+
 .menu-item .price .amount {
     font-family: 'Oaxaca';
     font-size: 1.5rem;
+    font-weight: normal;
 }
 
 .protein-options {
