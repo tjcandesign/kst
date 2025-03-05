@@ -108,7 +108,7 @@ header {
     padding: 2rem;
     transition: top 0.3s ease-in-out;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .preorder-tray.active {
@@ -116,7 +116,7 @@ header {
 }
 
 .preorder-form {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
 }
