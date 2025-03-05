@@ -94,7 +94,6 @@ header {
     height: 400px;
     background: url('../images/svgs/Asset\ 11.svg') center/contain no-repeat;
     opacity: 0.9;
-    mix-blend-mode: multiply;
 }
 
 .hero .svg-overlay-3 {

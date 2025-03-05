@@ -1,23 +1,22 @@
 # Kennedy Street Tacos Website
 
-A modern, responsive website for Kennedy Street Tacos, featuring their menu, location, and contact information.
+A modern, responsive website for Kennedy Street Tacos, a Tuesday residency by Chef Jaren Morrow at Jackie Lee's in Washington, DC. The website features their menu, location information, and beautiful food photography.
 
 ## Features
 
-- Responsive design that works on all devices
-- Smooth scrolling navigation
-- Interactive menu items with hover effects
+- Modern, responsive design optimized for all devices
+- Dynamic SVG overlays in the hero section
+- Custom fonts (Calvous Demo and Oaxaca)
+- Masonry-style photo gallery
+- Interactive menu sections with hover effects
 - Google Maps integration
-- Social media links
-- Contact information section
+- Social media integration
+- Location and hours information
 
 ## Setup
 
 1. Clone the repository
-2. Add your images to the `/images` directory:
-   - `logo.png` - The Kennedy Street Tacos logo
-   - `hero-tacos.jpg` - Hero section background image
-   - `taco1.jpg`, `taco2.jpg`, `taco3.jpg` - Menu item images
+2. Open index.html in your browser
 
 ## File Structure
 
@@ -25,14 +24,17 @@ A modern, responsive website for Kennedy Street Tacos, featuring their menu, loc
 Kennedy-Street-Tacos/
 ├── css/
 │   └── styles.css
-├── js/
-│   └── script.js
+├── fonts/
+│   ├── Calvous DEMO.otf
+│   └── Oaxaca.otf
 ├── images/
-│   ├── logo.png
-│   ├── hero-tacos.jpg
-│   ├── taco1.jpg
-│   ├── taco2.jpg
-│   └── taco3.jpg
+│   ├── svgs/
+│   │   ├── Asset 8.svg
+│   │   ├── Asset 9.svg
+│   │   ├── Asset 11.svg
+│   │   ├── bychef.svg
+│   │   └── logo.svg
+│   └── [food photography]
 ├── index.html
 └── README.md
 ```
@@ -40,17 +42,23 @@ Kennedy-Street-Tacos/
 ## Technologies Used
 
 - HTML5
-- CSS3
-- JavaScript
-- Google Fonts (Alfa Slab One, Poppins)
+- CSS3 with modern features:
+  - CSS Grid
+  - CSS Columns for masonry layout
+  - CSS Variables
+  - Flexbox
+- Google Fonts (Poppins)
 - Font Awesome Icons
 - Google Maps Embed API
+- Custom fonts (Calvous Demo, Oaxaca)
 
-## Customization
+## Design Features
 
-- Colors can be modified in the `:root` section of `styles.css`
-- Menu items can be added/modified in the `menu-grid` section of `index.html`
-- Social media links can be updated in the footer section of `index.html`
+- Black header with left-aligned logo
+- Three-layer SVG overlay system in hero section
+- Two-column masonry gallery
+- Yellow menu background (#ffea1b)
+- Responsive layout with mobile optimization
 
 ## Browser Support
 
