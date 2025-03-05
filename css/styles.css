@@ -107,6 +107,8 @@ header {
     transition: height 0.3s ease-in-out;
     width: 100%;
     margin: 0;
+    position: relative;
+    z-index: 1001;
 }
 
 #preorderTray:target {
@@ -117,10 +119,19 @@ header {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--primary-color);
     text-decoration: none;
     line-height: 1;
+    z-index: 1002;
+    cursor: pointer;
+    background: var(--menu-background);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 .preorder-form {
@@ -137,6 +148,45 @@ header {
     border: none;
     background: transparent;
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .preorder-tray {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #preorderTray:target {
+        height: 100vh;
+    }
+
+    .preorder-form {
+        padding: 1rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 60px;
+    }
+
+    .preorder-form iframe {
+        height: calc(100vh - 120px);
+        max-height: 600px;
+    }
+
+    .close-tray {
+        top: 70px;
+    }
 }
 
 
