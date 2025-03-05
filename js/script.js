@@ -1,17 +1,20 @@
 // Add smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]:not(#merchPreorderLink)').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        // Only scroll if href is not just '#'
-        if (href && href !== '#') {
-            const element = document.querySelector(href);
-            if (element) {
-                element.scrollIntoView({
+document.addEventListener('DOMContentLoaded', () => {
+    // Get all anchor links that have an href starting with # and lead to a section
+    const menuLinks = document.querySelectorAll('a[href^="#menu"], a[href^="#gallery"]');
+    
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
                     behavior: 'smooth'
                 });
             }
-        }
+        });
     });
 });
 
