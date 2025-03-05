@@ -848,6 +848,18 @@ footer {
     margin: 2rem 0;
 }
 
+.gang-illustration {
+    margin-top: 200px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.gang-illustration img {
+    max-width: 750px;
+    width: 100%;
+    height: auto;
+}
+
 .instagram-link {
     font-family: 'Oaxaca', cursive;
     font-size: 1.5rem;
