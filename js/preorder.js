@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.querySelector('.submit-btn');
 
     // Google Form URL
-    const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfLXKK8YtgpBvRqjTiDDSIGYgLHVBIZxZWWEHHHNOGCpZTrVA/formResponse';
+    const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfjwsE_NHa-7aRN5sx01r2vjL_weNv009I85yIOcLxD4uq1Lw/formResponse';
 
     // Toggle tray
     merchLink.addEventListener('click', (e) => {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add email input - using the Google Forms entry ID
         const emailInput = document.createElement('input');
         emailInput.type = 'hidden';
-        emailInput.name = 'entry.1234567890'; // Replace with your actual entry ID
+        emailInput.name = 'entry.1045781291'; // Email field entry ID
         emailInput.value = email;
         form.appendChild(emailInput);
 
