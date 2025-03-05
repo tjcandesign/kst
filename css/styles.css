@@ -90,7 +90,7 @@ header {
     text-decoration: none;
     animation: 
         flash-colors 2s infinite,
-        bounce 1.5s ease-in-out;
+        bounce 1.5s ease-in-out 2;
     transition: text-decoration 0.2s;
     display: inline-block;
 }
