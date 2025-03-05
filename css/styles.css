@@ -446,6 +446,28 @@ footer {
     margin-bottom: 3rem;
 }
 
+.special-section {
+    background: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 4rem;
+}
+
+.special-section .menu-section-title {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.special-section .menu-item {
+    border-bottom: 1px dashed white;
+}
+
+.special-section .menu-item-info h3,
+.special-section .menu-item-info p,
+.special-section .price {
+    color: white;
+}
+
 .menu-section-title {
     font-family: var(--font-heading);
     color: var(--primary-color);
