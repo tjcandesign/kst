@@ -174,8 +174,8 @@ header {
 }
 
 .hero-overlay {
-    width: 80%;
-    max-width: 800px;
+    width: 60%;
+    max-width: 600px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -565,13 +565,9 @@ footer {
     gap: 2px;
 }
 
-.menu-item .price .currency {
-    font-family: 'Oaxaca';
-    font-size: 1.5rem;
-}
-
+.menu-item .price .currency,
 .menu-item .price .amount {
-    font-family: 'Calvous Demo';
+    font-family: 'Oaxaca';
     font-size: 1.5rem;
 }
 
