@@ -666,9 +666,10 @@ footer {
 
 .notification-text {
     white-space: nowrap;
-    padding-right: 0;
-    animation: scroll 20s linear infinite;
+    padding-right: 200px;
+    animation: scroll 40s linear infinite;
     flex-shrink: 0;
+    display: inline-block;
 }
 
 @keyframes scroll {
