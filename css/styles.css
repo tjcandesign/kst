@@ -96,16 +96,23 @@ footer {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 2rem;
+    text-align: left;
+}
+
+.location-info h2 {
+    padding-left: 0;
+    text-align: left;
 }
 
 #contact {
     padding: 4rem 0;
     min-height: 80vh;
-    background: url('../images/DSC02403.jpg') center/cover no-repeat;
+    background: url('../images/DSC02403.jpg') left/cover no-repeat;
     position: relative;
     color: white;
     display: flex;
     align-items: center;
+    text-align: left;
 }
 
 #contact::before {
