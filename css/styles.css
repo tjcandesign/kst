@@ -36,8 +36,8 @@ header {
     position: fixed;
     top: 65px;
     transition: top 0.3s ease;
-    left: 0;
-    right: 0;
+    left: 10px;
+    right: 10px;
     padding: 1rem 2rem;
     z-index: 1000;
     display: flex;
