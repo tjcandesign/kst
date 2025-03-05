@@ -34,7 +34,7 @@ body {
 /* Header Styles */
 header {
     position: fixed;
-    top: 35px;
+    top: 45px;
     transition: top 0.3s ease;
     left: 0;
     right: 0;
@@ -645,7 +645,7 @@ footer {
 .notification-bar {
     background: var(--menu-background);
     color: var(--text-color);
-    padding: 0.5rem;
+    padding: 0.6rem;
     position: fixed;
     width: 100%;
     top: 0;
