@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Close tray when clicking outside
+    document.addEventListener('click', (e) => {
+        const tray = document.getElementById('preorderTray');
+        const link = document.getElementById('merchPreorderLink');
+        
+        // If tray is open (has :target) and click is outside tray and not on the link
+        if (window.location.hash === '#preorderTray' && 
+            !tray.contains(e.target) && 
+            !link.contains(e.target)) {
+            window.location.hash = '';
+        }
+    });
     const preorderForm = document.querySelector('#preorderForm');
     const submitButton = document.querySelector('.submit-btn');
 
