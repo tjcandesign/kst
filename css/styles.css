@@ -60,6 +60,60 @@ header {
     width: 80px;
 }
 
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+#location {
+    padding: 4rem 0;
+    background: url('../images/DSC02403.jpg') center/cover no-repeat;
+    position: relative;
+    color: white;
+}
+
+#location::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+#location > * {
+    position: relative;
+    z-index: 2;
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
     header {
@@ -75,7 +129,8 @@ header {
     }
 
     .hero-overlay {
-        width: 100%;
+        width: 90%;
+        max-width: 800px;
         height: auto;
         padding: 0 1rem;
     }
@@ -179,8 +234,8 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1680px;
-    height: 840px;
+    width: 1400px;
+    height: 700px;
     z-index: 10;
 }
 
@@ -246,11 +301,18 @@ header {
 }
 
 .menu-item .price {
-    font-family: var(--font-heading);
     color: var(--primary-color);
     font-size: 1.2rem;
     font-weight: bold;
     white-space: nowrap;
+}
+
+.menu-item .price .currency {
+    font-family: 'Oaxaca', cursive;
+}
+
+.menu-item .price .amount {
+    font-family: var(--font-heading);
 }
 
 .protein-options {
