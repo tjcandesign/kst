@@ -54,8 +54,15 @@ header .flag img {
     width: 300px;
 }
 
+.merch-preorder {
+    font-family: var(--font-heading);
+    color: white;
+    font-size: 1.5rem;
+    mix-blend-mode: difference;
+}
+
 .flag {
-    margin-left: auto;
+    margin-left: 2rem;
 }
 
 .flag img {
