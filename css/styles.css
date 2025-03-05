@@ -247,7 +247,7 @@ header {
 }
 
 .menu-item .price {
-    font-family: 'Oaxaca', cursive;
+    font-family: var(--font-heading);
     color: var(--primary-color);
     font-size: 1.2rem;
     font-weight: bold;
@@ -273,8 +273,9 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    justify-items: center;
-    text-align: center;
+    justify-items: start;
+    text-align: left;
+    padding-left: 2rem;
 }
 
 .protein-item {
