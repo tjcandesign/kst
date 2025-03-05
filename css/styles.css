@@ -34,7 +34,7 @@ body {
 /* Header Styles */
 header {
     position: fixed;
-    top: 85px;
+    top: 65px;
     transition: top 0.3s ease;
     left: 0;
     right: 0;
@@ -102,7 +102,7 @@ header {
 
 .preorder-tray {
     position: fixed;
-    top: -100%;
+    top: -200%;
     left: 0;
     right: 0;
     background: var(--menu-background);
@@ -113,7 +113,7 @@ header {
 }
 
 .preorder-tray.active {
-    top: 0;
+    top: 35px;
 }
 
 .preorder-form {
