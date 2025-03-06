@@ -931,36 +931,43 @@ footer {
     margin-left: 2rem;
 }
 
+@media (max-width: 480px) {
+    .contact-info {
+        margin-left: 0;
+    }
+}
+
 .spinning-circle {
     margin-top: 4rem;
-    width: 80px;
+    width: 65px;
 }
 
 .spinning-circle img {
     width: 100%;
     height: auto;
-    animation: spin 10s linear infinite reverse;
+    -webkit-animation: spin 8s linear infinite reverse;
+    animation: spin 8s linear infinite reverse;
     transform-origin: center center;
-    -webkit-animation: spin 10s linear infinite reverse;
+    display: block;
 }
 
 .spinning-circle img path[fill="#FFFFFF"] {
     fill: #FFD700;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(360deg); }
+    to { -webkit-transform: rotate(0deg); }
 }
 
-@-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+@keyframes spin {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
 }
 
 @media (max-width: 480px) {
     .spinning-circle {
-        width: 60px;
+        width: 75px;
     }
 }
 
