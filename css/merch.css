@@ -1,21 +1,83 @@
 /* Merch Store Styles */
 .merch-hero {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 14rem 2rem;
     background-color: var(--menu-background);
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.merch-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, var(--secondary-color) 1px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .merch-hero h1 {
     font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    font-size: 5.5rem;
+    line-height: 1.1;
+    color: #FF2D00;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    -webkit-font-smoothing: antialiased;
 }
 
 .merch-hero .subtitle {
-    font-size: 1.2rem;
-    color: var(--secondary-color);
+    font-size: 2rem;
+    color: #2C2C2C;
+    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+    opacity: 0.95;
+    font-weight: 500;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.merch-hero .description {
+    font-size: 1.3rem;
+    color: #4A4A4A;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+    .merch-hero {
+        padding: 8rem 1.5rem;
+    }
+
+    .merch-hero h1 {
+        font-size: 3rem;
+    }
+
+    .merch-hero .subtitle {
+        font-size: 1.4rem;
+    }
+
+    .merch-hero .description {
+        font-size: 1rem;
+    }
 }
 
 .merch-grid {
