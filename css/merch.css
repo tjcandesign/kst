@@ -1,0 +1,244 @@
+/* Merch Store Styles */
+.merch-hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--menu-background);
+    margin-bottom: 2rem;
+}
+
+.merch-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.merch-hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+.merch-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.merch-category {
+    margin-bottom: 4rem;
+}
+
+.merch-category h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.merch-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.merch-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.merch-item:hover {
+    transform: translateY(-5px);
+}
+
+.merch-image {
+    position: relative;
+    padding-top: 100%;
+    background: #f5f5f5;
+}
+
+.merch-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.merch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.merch-item:hover .merch-overlay {
+    opacity: 1;
+}
+
+.size-selector,
+.buy-now {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background: var(--primary-color);
+    color: white;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.size-selector:hover,
+.buy-now:hover {
+    background: #e63517;
+}
+
+.merch-info {
+    padding: 1.5rem;
+}
+
+.merch-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.merch-info p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.price {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.size-guide {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 2rem;
+}
+
+.size-guide h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.size-chart {
+    overflow-x: auto;
+}
+
+.size-chart table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.size-chart th,
+.size-chart td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.size-chart th {
+    background: var(--menu-background);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.cart-popup {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    transition: right 0.3s;
+    z-index: 1000;
+}
+
+.cart-popup.active {
+    right: 0;
+}
+
+.cart-content {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.cart-total {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.checkout-button {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checkout-button:hover {
+    background: #e63517;
+}
+
+@media (max-width: 768px) {
+    .merch-hero {
+        padding: 3rem 1rem;
+    }
+
+    .merch-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .merch-grid {
+        padding: 1rem;
+    }
+
+    .cart-popup {
+        width: 100%;
+        right: -100%;
+    }
+}

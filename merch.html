@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KST Merch - Kennedy Street Tacos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/merch.css">
+</head>
+<body>
+    <div class="notification-bar">
+        <div class="notification-content">
+            <div class="notification-text">KST ON BREAK TILL 3/18</div>
+        </div>
+        <button class="close-notification" onclick="this.parentElement.classList.add('hidden')">&times;</button>
+    </div>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/svgs/KST logo red.svg" alt="Kennedy Street Tacos Logo">
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="flag">
+                <img src="images/svgs/flag.svg" alt="Flag">
+            </div>
+        </div>
+    </header>
+
+    <main style="margin-top: 52px;">
+        <section class="merch-hero">
+            <h1>KST Merch</h1>
+            <p class="subtitle">Rep your favorite taco spot</p>
+        </section>
+
+        <section class="merch-grid">
+            <!-- T-Shirts -->
+            <div class="merch-category">
+                <h2>T-Shirts</h2>
+                <div class="merch-items">
+                    <div class="merch-item">
+                        <div class="merch-image">
+                            <img src="images/merch/classic-tee.jpg" alt="Classic KST Logo Tee">
+                            <div class="merch-overlay">
+                                <button class="size-selector">Select Size</button>
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3>Classic KST Logo Tee</h3>
+                            <p>Our signature logo tee in vintage red</p>
+                            <span class="price">$25</span>
+                        </div>
+                    </div>
+                    <div class="merch-item">
+                        <div class="merch-image">
+                            <img src="images/merch/street-tee.jpg" alt="Street Style Tee">
+                            <div class="merch-overlay">
+                                <button class="size-selector">Select Size</button>
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3>Street Style Tee</h3>
+                            <p>Urban design featuring DC street map</p>
+                            <span class="price">$28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessories -->
+            <div class="merch-category">
+                <h2>Accessories</h2>
+                <div class="merch-items">
+                    <div class="merch-item">
+                        <div class="merch-image">
+                            <img src="images/merch/koozie.jpg" alt="KST Koozie">
+                            <div class="merch-overlay">
+                                <button class="buy-now">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3>KST Koozie</h3>
+                            <p>Keep your drinks cool in style</p>
+                            <span class="price">$8</span>
+                        </div>
+                    </div>
+                    <div class="merch-item">
+                        <div class="merch-image">
+                            <img src="images/merch/sticker-pack.jpg" alt="Sticker Pack">
+                            <div class="merch-overlay">
+                                <button class="buy-now">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3>Sticker Pack</h3>
+                            <p>Set of 4 KST vinyl stickers</p>
+                            <span class="price">$10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="size-guide">
+            <h2>Size Guide</h2>
+            <div class="size-chart">
+                <table>
+                    <tr>
+                        <th>Size</th>
+                        <th>Chest (inches)</th>
+                        <th>Length (inches)</th>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>36-38</td>
+                        <td>28</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td>39-41</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>42-44</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>XL</td>
+                        <td>45-47</td>
+                        <td>31</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <div class="cart-popup" id="cartPopup">
+            <div class="cart-content">
+                <h3>Shopping Cart</h3>
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be added here dynamically -->
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="checkout-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/kennedystreettacos/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="credits">
+            <p>&copy; 2025 Kennedy Street Tacos. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/merch.js"></script>
+</body>
+</html>
