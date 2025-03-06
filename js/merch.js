@@ -82,21 +82,54 @@ function showSizeDialog(name, price) {
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         z-index: 1001;
+        max-width: 400px;
+        width: 90%;
     `;
 
     dialog.innerHTML = `
-        <h3 style="margin-bottom: 1rem;">Select Size</h3>
-        <div class="size-buttons" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+        <button class="close-dialog" style="
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s;
+        ">&times;</button>
+        <h3 style="
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        ">Select Size</h3>
+        <div class="size-buttons" style="
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        ">
             ${sizes.map(size => `
                 <button class="size-button" style="
-                    padding: 0.5rem;
-                    border: 1px solid #ddd;
+                    padding: 1rem;
+                    border: 2px solid #ddd;
+                    border-radius: 4px;
                     background: white;
                     cursor: pointer;
                     transition: all 0.2s;
+                    font-family: var(--font-heading);
+                    font-size: 1.2rem;
                 ">${size}</button>
             `).join('')}
         </div>
+        <div style="
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        ">Click outside to cancel</div>
     `;
 
     // Add backdrop
@@ -111,6 +144,7 @@ function showSizeDialog(name, price) {
         z-index: 1000;
     `;
 
+    document.body.style.overflow = 'hidden';
     document.body.appendChild(backdrop);
     document.body.appendChild(dialog);
 
@@ -122,48 +156,108 @@ function showSizeDialog(name, price) {
                 price,
                 size: button.textContent
             });
-            dialog.remove();
-            backdrop.remove();
+            closeDialog();
         });
 
         // Add hover effect
         button.addEventListener('mouseover', () => {
-            button.style.background = '#f5f5f5';
+            button.style.borderColor = 'var(--primary-color)';
+            button.style.color = 'var(--primary-color)';
         });
         button.addEventListener('mouseout', () => {
-            button.style.background = 'white';
+            button.style.borderColor = '#ddd';
+            button.style.color = 'inherit';
         });
     });
 
-    backdrop.addEventListener('click', () => {
+    dialog.querySelector('.close-dialog').addEventListener('click', closeDialog);
+    backdrop.addEventListener('click', closeDialog);
+
+    // Handle escape key
+    const escHandler = (e) => {
+        if (e.key === 'Escape') {
+            closeDialog();
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+
+    function closeDialog() {
         dialog.remove();
         backdrop.remove();
-    });
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', escHandler);
+    }
 }
 
 function addToCart(item) {
     cart.push(item);
     updateCartDisplay();
     showCartPopup();
+    // Show confirmation message
+    showMessage(`Added ${item.name} to cart`);
+}
+
+function removeFromCart(index) {
+    const item = cart[index];
+    cart.splice(index, 1);
+    updateCartDisplay();
+    // Show confirmation message
+    showMessage(`Removed ${item.name} from cart`);
+    // Close cart if empty
+    if (cart.length === 0) {
+        closeCart();
+    }
+}
+
+function showMessage(text) {
+    const message = document.createElement('div');
+    message.className = 'toast-message';
+    message.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 1002;
+        opacity: 0;
+        transition: opacity 0.3s;
+    `;
+    message.textContent = text;
+    
+    document.body.appendChild(message);
+    
+    // Fade in
+    requestAnimationFrame(() => {
+        message.style.opacity = '1';
+    });
+    
+    // Remove after delay
+    setTimeout(() => {
+        message.style.opacity = '0';
+        setTimeout(() => message.remove(), 300);
+    }, 2000);
 }
 
 function updateCartDisplay() {
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
     
-    cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item" style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-        ">
-            <div>
-                <h4 style="margin: 0;">${item.name}</h4>
+    cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <h4>${item.name}</h4>
                 ${item.size ? `<small>Size: ${item.size}</small>` : ''}
+                <div class="item-price">$${item.price.toFixed(2)}</div>
             </div>
-            <div>$${item.price.toFixed(2)}</div>
+            <button class="remove-item" onclick="removeFromCart(${index})">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
     `).join('');
 
@@ -174,6 +268,13 @@ function updateCartDisplay() {
 function showCartPopup() {
     const popup = document.getElementById('cartPopup');
     popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+    const popup = document.getElementById('cartPopup');
+    popup.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 function setupCartIcon() {
@@ -183,7 +284,18 @@ function setupCartIcon() {
     // Toggle cart popup
     cartIcon.addEventListener('click', () => {
         const popup = document.getElementById('cartPopup');
-        popup.classList.toggle('active');
+        if (popup.classList.contains('active')) {
+            closeCart();
+        } else {
+            showCartPopup();
+        }
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeCart();
+        }
     });
 
     // Update cart count
