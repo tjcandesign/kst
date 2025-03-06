@@ -227,14 +227,14 @@
 
 .cart-popup {
     position: fixed;
-    top: 0;
+    top: 52px; /* Account for notification bar */
     right: -400px;
     width: 400px;
-    height: 100vh;
+    height: calc(100vh - 52px);
     background: white;
     box-shadow: -2px 0 4px rgba(0,0,0,0.1);
     transition: right 0.3s;
-    z-index: 1000;
+    z-index: 999; /* Below notification bar */
 }
 
 .cart-popup.active {
@@ -246,6 +246,24 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.cart-content .close-cart {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.cart-content .close-cart:hover {
+    color: var(--primary-color);
 }
 
 .cart-content h3 {
