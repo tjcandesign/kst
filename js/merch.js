@@ -13,10 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupHeaderScroll() {
     const header = document.querySelector('header');
     const heroSection = document.querySelector('.merch-hero');
+    const flag = document.querySelector('.flag img');
+    
+    // Initial state - red on yellow background
+    flag.style.filter = 'brightness(0) saturate(100%) invert(27%) sepia(91%) saturate(2352%) hue-rotate(355deg) brightness(97%) contrast(124%)';
     
     const observer = new IntersectionObserver(
         ([entry]) => {
             header.classList.toggle('scrolled', !entry.isIntersecting);
+            
+            // When scrolled past hero (yellow background), flag should be yellow
+            if (!entry.isIntersecting) {
+                flag.style.filter = 'brightness(0) saturate(100%) invert(89%) sepia(27%) saturate(1066%) hue-rotate(359deg) brightness(101%) contrast(94%)';
+            } else {
+                // When on hero (yellow background), flag should be red
+                flag.style.filter = 'brightness(0) saturate(100%) invert(27%) sepia(91%) saturate(2352%) hue-rotate(355deg) brightness(97%) contrast(124%)';
+            }
         },
         {
             rootMargin: '-100px 0px 0px 0px'
