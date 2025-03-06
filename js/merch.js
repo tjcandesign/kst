@@ -6,8 +6,27 @@ const sizes = ['S', 'M', 'L', 'XL'];
 document.addEventListener('DOMContentLoaded', () => {
     initializeSizeSelectors();
     initializeBuyButtons();
-    setupCartToggle();
+    setupCartIcon();
+    setupHeaderScroll();
 });
+
+function setupHeaderScroll() {
+    const header = document.querySelector('header');
+    const heroSection = document.querySelector('.merch-hero');
+    
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            header.classList.toggle('scrolled', !entry.isIntersecting);
+        },
+        {
+            rootMargin: '-100px 0px 0px 0px'
+        }
+    );
+    
+    if (heroSection) {
+        observer.observe(heroSection);
+    }
+}
 
 function initializeSizeSelectors() {
     document.querySelectorAll('.size-selector').forEach(button => {
@@ -145,46 +164,19 @@ function showCartPopup() {
     popup.classList.add('active');
 }
 
-function setupCartToggle() {
-    // Add cart icon to header
-    const headerRight = document.querySelector('.header-right');
-    const cartButton = document.createElement('div');
-    cartButton.className = 'cart-button';
-    cartButton.innerHTML = `
-        <i class="fas fa-shopping-cart" style="
-            font-size: 1.5rem;
-            color: white;
-            cursor: pointer;
-            margin-left: 2rem;
-        "></i>
-        <span class="cart-count" style="
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        ">0</span>
-    `;
-    cartButton.style.position = 'relative';
-    headerRight.insertBefore(cartButton, headerRight.firstChild);
-
+function setupCartIcon() {
+    const cartIcon = document.querySelector('.cart-icon');
+    const cartCount = document.querySelector('.cart-count');
+    
     // Toggle cart popup
-    cartButton.addEventListener('click', () => {
+    cartIcon.addEventListener('click', () => {
         const popup = document.getElementById('cartPopup');
         popup.classList.toggle('active');
     });
 
     // Update cart count
     function updateCartCount() {
-        const count = document.querySelector('.cart-count');
-        count.textContent = cart.length;
+        cartCount.textContent = cart.length || '0';
     }
 
     // Add observer for cart changes
