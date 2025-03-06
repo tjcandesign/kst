@@ -932,16 +932,20 @@ footer {
 }
 
 .spinning-circle {
-    margin-top: 2rem;
-    width: 95px;
+    margin-top: 4rem;
+    width: 80px;
 }
 
 .spinning-circle img {
     width: 100%;
     height: auto;
-    animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite reverse;
     transform-origin: center center;
-    -webkit-animation: spin 10s linear infinite;
+    -webkit-animation: spin 10s linear infinite reverse;
+}
+
+.spinning-circle img path[fill="#FFFFFF"] {
+    fill: #FFD700;
 }
 
 @keyframes spin {
@@ -956,7 +960,7 @@ footer {
 
 @media (max-width: 480px) {
     .spinning-circle {
-        width: 70px;
+        width: 60px;
     }
 }
 
