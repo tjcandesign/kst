@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FL0QV50B2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5FL0QV50B2');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Kennedy Street Tacos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/merch.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/svgs/KST logo red.svg" alt="Kennedy Street Tacos Logo">
+            </a>
+        </div>
+    </header>
+
+    <main style="margin-top: 52px;">
+        <div class="order-status-container" style="max-width: 600px; margin: 4rem auto; padding: 2rem; text-align: center;">
+            <div id="loading" style="display: none;">
+                <h2>Processing Your Order...</h2>
+                <p>Please wait while we confirm your payment.</p>
+            </div>
+            <div id="success" style="display: none;">
+                <h2>Thank You for Your Order!</h2>
+                <p>Your payment has been processed successfully.</p>
+                <div class="order-number" style="margin: 2rem 0;"></div>
+                <p>We'll send a confirmation email with your order details shortly.</p>
+                <a href="/merch.html" class="continue-shopping" style="display: inline-block; margin-top: 2rem;">Continue Shopping</a>
+            </div>
+            <div id="error" style="display: none;">
+                <h2>Oops! Something Went Wrong</h2>
+                <p>We encountered an error processing your payment.</p>
+                <p id="error-message" style="color: #df1b41; margin: 1rem 0;"></p>
+                <a href="/merch.html" class="retry-payment" style="display: inline-block; margin-top: 2rem;">Return to Cart</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const stripe = Stripe('YOUR_PUBLISHABLE_KEY'); // Replace with your publishable key
+
+        // Show loading state
+        document.getElementById('loading').style.display = 'block';
+
+        // Check the payment status
+        const clientSecret = new URLSearchParams(window.location.search).get('payment_intent_client_secret');
+        if (clientSecret) {
+            stripe.retrievePaymentIntent(clientSecret)
+                .then(({paymentIntent}) => {
+                    const loading = document.getElementById('loading');
+                    const success = document.getElementById('success');
+                    const error = document.getElementById('error');
+                    const errorMessage = document.getElementById('error-message');
+
+                    loading.style.display = 'none';
+
+                    switch (paymentIntent.status) {
+                        case 'succeeded':
+                            // Generate order number
+                            const orderNumber = 'KST-' + Date.now().toString().slice(-6);
+                            success.querySelector('.order-number').textContent = `Order #${orderNumber}`;
+                            success.style.display = 'block';
+                            // Clear cart from localStorage if you're using it
+                            localStorage.removeItem('kst_cart');
+                            break;
+                        case 'processing':
+                            loading.style.display = 'block';
+                            break;
+                        case 'requires_payment_method':
+                            error.style.display = 'block';
+                            errorMessage.textContent = 'Your payment was not successful, please try again.';
+                            break;
+                        default:
+                            error.style.display = 'block';
+                            errorMessage.textContent = 'Something went wrong with your payment.';
+                            break;
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
