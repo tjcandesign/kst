@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/merch.css">
+    <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
 </head>
 <body>
     <div class="notification-bar">
@@ -63,13 +64,13 @@
                     </div>
                     <div class="merch-item">
                         <div class="merch-image">
-                            <img src="images/merch/street-tee.jpg" alt="Street Style Tee">
+                            <img src="images/merch/street-tee.jpg" alt="District's Friendliest Shirt">
                             <div class="merch-overlay">
                                 <button class="size-selector">Select Size</button>
                             </div>
                         </div>
                         <div class="merch-info">
-                            <h3>Street Style Tee</h3>
+                            <h3>District's Friendliest Shirt</h3>
                             <p>Urban design featuring DC street map</p>
                             <span class="price">$28</span>
                         </div>
@@ -155,7 +156,43 @@
                     <span>Total:</span>
                     <span id="cartTotal">$0.00</span>
                 </div>
-                <button class="checkout-button">Proceed to Checkout</button>
+                <button class="checkout-button" onclick="showCheckoutForm()">Proceed to Checkout</button>
+                <div class="checkout-form" id="checkoutForm" style="display: none;">
+                    <h4>Shipping Information</h4>
+                    <form id="shippingForm" onsubmit="submitOrder(event)">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="address" name="address" placeholder="Street Address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" id="city" name="city" placeholder="City" required>
+                            </div>
+                            <div class="form-group half">
+                                <input type="text" id="state" name="state" placeholder="State" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="zip" name="zip" placeholder="ZIP Code" required>
+                        </div>
+                        <div class="form-divider"></div>
+                        <h4>Payment Information</h4>
+                        <div class="form-group">
+                            <div id="card-container"></div>
+                            <div id="payment-status-container" class="payment-message"></div>
+                        </div>
+                        <button type="submit" class="submit-order">Place Order</button>
+                        <button type="button" class="back-to-cart" onclick="hideCheckoutForm()">Back to Cart</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="cart-overlay" onclick="closeCart()"></div>
