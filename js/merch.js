@@ -1,3 +1,8 @@
+// Initialize Square
+const appId = 'YOUR_SQUARE_APP_ID'; // Replace with your Square application ID
+let card;
+let payments;
+
 // Cart functionality
 let cart = [];
 const sizes = ['S', 'M', 'L', 'XL'];
@@ -305,4 +310,215 @@ function setupCartIcon() {
 
     // Add observer for cart changes
     setInterval(updateCartCount, 100);
+}
+
+async function showCheckoutForm() {
+    const cartItems = document.getElementById('cartItems');
+    const checkoutForm = document.getElementById('checkoutForm');
+    const checkoutButton = document.querySelector('.checkout-button');
+    
+    cartItems.style.display = 'none';
+    checkoutForm.style.display = 'block';
+    checkoutButton.style.display = 'none';
+
+    try {
+        // Initialize Square payments if not already initialized
+        if (!payments) {
+            payments = window.Square.payments(appId, 'YOUR_LOCATION_ID');
+            card = await payments.card();
+            await card.attach('#card-container');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showMessage('Failed to initialize payment form. Please try again.');
+    }
+}
+
+function hideCheckoutForm() {
+    const cartItems = document.getElementById('cartItems');
+    const checkoutForm = document.getElementById('checkoutForm');
+    const checkoutButton = document.querySelector('.checkout-button');
+    
+    cartItems.style.display = 'block';
+    checkoutForm.style.display = 'none';
+    checkoutButton.style.display = 'block';
+}
+
+function formatCardNumber(input) {
+    let value = input.value.replace(/\D/g, '');
+    value = value.substring(0, 16);
+    input.value = value;
+}
+
+function formatExpiry(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    input.value = value;
+}
+
+function formatCVV(input) {
+    let value = input.value.replace(/\D/g, '');
+    value = value.substring(0, 4);
+    input.value = value;
+}
+
+async function submitOrder(event) {
+    event.preventDefault();
+    
+    const submitButton = event.target.querySelector('.submit-order');
+    const messageElement = document.getElementById('payment-status-container');
+    
+    // Disable the submit button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = 'Processing...';
+    messageElement.textContent = '';
+    
+    try {
+        // Get form data
+        const formData = new FormData(event.target);
+        const shippingData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            address: {
+                addressLine1: formData.get('address'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                postalCode: formData.get('zip'),
+                country: 'US'
+            }
+        };
+
+        // Calculate total amount
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+        // Get a payment token from the card
+        const result = await card.tokenize();
+        if (result.status === 'OK') {
+            // Send payment token to your server
+            const response = await fetch('/api/create-payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sourceId: result.token,
+                    amount: total,
+                    items: cart,
+                    shipping: shippingData
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Payment failed');
+            }
+
+            const paymentResult = await response.json();
+            
+            // Generate order number and show confirmation
+            const orderNumber = 'KST-' + Date.now().toString().slice(-6);
+            const cartContent = document.querySelector('.cart-content');
+            cartContent.innerHTML = `
+                <div class="order-confirmation">
+                    <h4>Thank You!</h4>
+                    <p>Your order has been placed successfully.</p>
+                    <div class="order-number">Order #${orderNumber}</div>
+                    <p>We'll send a confirmation email to ${shippingData.email} with your order details.</p>
+                    <button class="continue-shopping" onclick="finishOrder()">Continue Shopping</button>
+                </div>
+            `;
+        } else {
+            throw new Error(result.errors[0].message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        messageElement.textContent = error.message || 'An unexpected error occurred. Please try again.';
+        submitButton.disabled = false;
+        submitButton.textContent = 'Place Order';
+    }
+}
+}
+
+function finishOrder() {
+    // Clear cart
+    cart = [];
+    
+    // Update cart count
+    const cartCount = document.querySelector('.cart-count');
+    cartCount.textContent = '0';
+    
+    // Close cart popup
+    closeCart();
+    
+    // Show confirmation message
+    showMessage('Thank you for your order!');
+    
+    // Reset cart content after animation
+    setTimeout(() => {
+        const cartContent = document.querySelector('.cart-content');
+        cartContent.innerHTML = `
+            <button class="close-cart" onclick="closeCart()">&times;</button>
+            <h3>Shopping Cart</h3>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-button" onclick="showCheckoutForm()">Proceed to Checkout</button>
+            <div class="checkout-form" id="checkoutForm" style="display: none;">
+                <h4>Shipping Information</h4>
+                <form id="shippingForm" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="address" name="address" placeholder="Street Address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <input type="text" id="city" name="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group half">
+                            <input type="text" id="state" name="state" placeholder="State" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="zip" name="zip" placeholder="ZIP Code" required>
+                    </div>
+                    <div class="form-divider"></div>
+                    <h4>Payment Information</h4>
+                    <div class="form-group">
+                        <input type="text" id="cardName" name="cardName" placeholder="Name on Card" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="Card Number" required
+                            pattern="[0-9]{16}" title="Please enter a valid 16-digit card number"
+                            oninput="formatCardNumber(this)">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required
+                                pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="Please enter a valid expiry date (MM/YY)"
+                                oninput="formatExpiry(this)">
+                        </div>
+                        <div class="form-group half">
+                            <input type="text" id="cvv" name="cvv" placeholder="CVV" required
+                                pattern="[0-9]{3,4}" title="Please enter a valid CVV"
+                                oninput="formatCVV(this)">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-order">Place Order</button>
+                    <button type="button" class="back-to-cart" onclick="hideCheckoutForm()">Back to Cart</button>
+                </form>
+            </div>
+        `;
+    }, 300);
 }

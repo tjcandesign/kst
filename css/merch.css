@@ -380,6 +380,136 @@
     color: var(--primary-color);
 }
 
+/* Checkout Form Styles */
+.checkout-form {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.checkout-form h4 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+.checkout-form input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.checkout-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.checkout-form input::placeholder {
+    color: #999;
+}
+
+.form-divider {
+    height: 1px;
+    background: #eee;
+    margin: 2rem 0;
+}
+
+.submit-order {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 1rem;
+}
+
+.submit-order:hover {
+    background: #e63517;
+}
+
+.back-to-cart {
+    width: 100%;
+    padding: 0.8rem;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #666;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.back-to-cart:hover {
+    background: #f5f5f5;
+    border-color: #999;
+}
+
+/* Order Confirmation Styles */
+.order-confirmation {
+    text-align: center;
+    padding: 2rem;
+}
+
+.order-confirmation h4 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.order-confirmation p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.order-number {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+.continue-shopping {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.continue-shopping:hover {
+    background: #e63517;
+}
+
 .cart-item h4 {
     font-family: var(--font-heading);
     font-size: 1.1rem;

@@ -8,11 +8,14 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "@square/web-sdk": "^2.1.0",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-rate-limit": "^7.5.0",
     "greenlock-express": "^4.0.3",
     "helmet": "^8.0.0",
+    "square": "^41.0.0",
+    "stripe": "^17.7.0",
     "twilio": "^4.21.0"
   },
   "devDependencies": {

@@ -1,0 +1,10 @@
+{
+  "weeklySpecial": {
+    "name": "birria tacos",
+    "description": "served with consomme",
+    "price": 13
+  },
+  "soldOutItems": [
+    "fish"
+  ]
+}

@@ -67,3 +67,4 @@ The website is tested and works on:
 - Firefox
 - Safari
 - Edge
+.hero .svg-overlay-2
