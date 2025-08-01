@@ -1,18 +1,36 @@
 // Initialize Square
-const appId = 'YOUR_SQUARE_APP_ID'; // Replace with your Square application ID
+const appId = window.ENV?.SQUARE_APP_ID || 'sandbox-sq0idb-YOUR-APP-ID';
+const locationId = window.ENV?.SQUARE_LOCATION_ID || 'YOUR-LOCATION-ID';
 let card;
 let payments;
+
+// Initialize Square payments
+async function initializeSquare() {
+    if (!window.Square) {
+        throw new Error('Square.js failed to load');
+    }
+
+    try {
+        payments = window.Square.payments(appId, locationId);
+        card = await payments.card();
+        await card.attach('#card-container');
+    } catch (e) {
+        console.error('Failed to initialize Square:', e);
+        showMessage('Failed to initialize payment system', 'error');
+    }
+}
 
 // Cart functionality
 let cart = [];
 const sizes = ['S', 'M', 'L', 'XL'];
 
 // Initialize the store
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initializeSizeSelectors();
     initializeBuyButtons();
     setupCartIcon();
     setupHeaderScroll();
+    await initializeSquare();
 });
 
 function setupHeaderScroll() {
@@ -73,6 +91,10 @@ function showSizeDialog(name, price) {
     // Remove any existing size dialog
     const existingDialog = document.querySelector('.size-dialog');
     if (existingDialog) existingDialog.remove();
+
+    // Show overlay
+    const overlay = document.querySelector('.size-dialog-overlay');
+    overlay.style.display = 'block';
 
     // Create new dialog
     const dialog = document.createElement('div');
@@ -214,7 +236,7 @@ function removeFromCart(index) {
     }
 }
 
-function showMessage(text) {
+function showMessage(text, type = 'success') {
     const message = document.createElement('div');
     message.className = 'toast-message';
     message.style.cssText = `
@@ -367,13 +389,10 @@ function formatCVV(input) {
 async function submitOrder(event) {
     event.preventDefault();
     
-    const submitButton = event.target.querySelector('.submit-order');
-    const messageElement = document.getElementById('payment-status-container');
-    
-    // Disable the submit button and show loading state
+    const form = event.target;
+    const submitButton = form.querySelector('.submit-order');
     submitButton.disabled = true;
     submitButton.textContent = 'Processing...';
-    messageElement.textContent = '';
     
     try {
         // Get form data
@@ -438,7 +457,6 @@ async function submitOrder(event) {
         submitButton.disabled = false;
         submitButton.textContent = 'Place Order';
     }
-}
 }
 
 function finishOrder() {

@@ -556,6 +556,8 @@
         right: -100%;
     }
 }
+
+.cart-content .close-cart {
     background: none;
     border: none;
     cursor: pointer;
@@ -604,6 +606,21 @@
 
 .checkout-button:hover {
     background: #e63517;
+}
+
+.view-product {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-product:hover {
+    background-color: #c41329;
 }
 
 @media (max-width: 768px) {

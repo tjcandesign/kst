@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/merch.css">
     <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    <script src="js/env.js"></script>
 </head>
 <body>
     <div class="notification-bar">
@@ -60,9 +61,9 @@
                     <div class="merch-item">
                         <div class="merch-image">
                             <img src="images/merch/classic-tee.jpg" alt="Classic KST Logo Tee">
-                            <div class="merch-overlay">
-                                <button class="size-selector">Select Size</button>
-                            </div>
+                            <a href="product.html?id=classic-tee" class="merch-overlay">
+                                <button class="view-product">View Product</button>
+                            </a>
                         </div>
                         <div class="merch-info">
                             <h3>Classic KST Logo Tee</h3>
@@ -73,9 +74,9 @@
                     <div class="merch-item">
                         <div class="merch-image">
                             <img src="images/merch/street-tee.jpg" alt="District's Friendliest Shirt">
-                            <div class="merch-overlay">
-                                <button class="size-selector">Select Size</button>
-                            </div>
+                            <a href="product.html?id=street-tee" class="merch-overlay">
+                                <button class="view-product">View Product</button>
+                            </a>
                         </div>
                         <div class="merch-info">
                             <h3>District's Friendliest Shirt</h3>
@@ -204,6 +205,7 @@
             </div>
         </div>
         <div class="cart-overlay" onclick="closeCart()"></div>
+        <div class="size-dialog-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;"></div>
     </main>
 
     <footer>

@@ -6,12 +6,13 @@ const rateLimit = require('express-rate-limit');
 const menuStatusRouter = require('./api/menu-status');
 
 // Initialize Square client
-const { Client, Environment } = require('square');
+const SquareConnect = require('square-connect');
 
-const squareClient = new Client({
-    accessToken: process.env.SQUARE_ACCESS_TOKEN,
-    environment: process.env.NODE_ENV === 'production' ? Environment.Production : Environment.Sandbox
-});
+const defaultClient = SquareConnect.ApiClient.instance;
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = process.env.SQUARE_ACCESS_TOKEN;
+
+const paymentsApi = new SquareConnect.PaymentsApi();
 
 // Debug: Print dotenv result and environment variables
 console.log('Dotenv config result:', result);

@@ -17,6 +17,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Square Web Payments SDK -->
+    <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    <script src="js/env.js"></script>
+    <script src="js/square-payments.js"></script>
+    <style>
+        #payment-form {
+            max-width: 550px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #card-container {
+            margin: 20px 0;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #payment-status {
+            margin: 20px 0;
+            padding: 10px;
+            display: none;
+            background: #f8f8f8;
+            border-radius: 4px;
+        }
+        #submit-payment {
+            background: #e31837;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        #submit-payment:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
     <div class="notification-bar">
@@ -46,6 +87,21 @@
         <section class="hero">
             <img src="images/svgs/Herooverlay.svg" alt="Hero Overlay" class="hero-overlay">
         </section>
+
+        <!-- Shopping Cart -->
+        <div id="cart-container" style="display: none; margin: 20px auto; max-width: 550px; padding: 20px;">
+            <h2>Your Order</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+        </div>
+
+        <!-- Square Payment Form -->
+        <form id="payment-form" style="display: none;">
+            <h2>Payment Details</h2>
+            <div id="card-container"></div>
+            <div id="payment-status"></div>
+            <button id="submit-payment" type="submit">Pay Now</button>
+        </form>
 
         <section id="menu" class="menu">
             <div class="menu-content">
@@ -261,5 +317,6 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
